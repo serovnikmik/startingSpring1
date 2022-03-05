@@ -7,13 +7,38 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="musicBean"
+    <context:property-placeholder
+            location="classpath:musicPlayerInfo.properties"/>
+
+    <bean id="classicalMusicBean"
           class="org.example.ClassicalMusic">
     </bean>
 
+    <bean id="rockMusicBean"
+          class="org.example.RockMusic">
+    </bean>
+
+    <bean id="hyperpopMusicBean"
+          class="org.example.HyperpopMusic">
+    </bean>
+
     <bean id="musicPlayer"
-          class="org.example.MusicPlayer">
-        <constructor-arg ref="musicBean"/>
+          class="org.example.MusicPlayer"
+          scope="singleton">
+<!--        <constructor-arg ref="musicBean"/>-->
+        <property name="music" ref="classicalMusicBean"/>
+
+        <property name="volume" value="${musicPlayer.volume}"/>
+        <property name="name" value="${musicPlayer.name}"/>
+
+        <property name="musicList">
+            <list>
+                <ref bean="classicalMusicBean"/>
+                <ref bean="rockMusicBean"/>
+                <ref bean="hyperpopMusicBean"/>
+            </list>
+        </property>
+
     </bean>
 
 </beans>

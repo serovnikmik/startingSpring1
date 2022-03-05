@@ -1,6 +1,6 @@
 package org.example;
 
-public class HyperPopMusic implements Music{
+public class HyperpopMusic implements Music{
 
     @Override
     public String getSong(){
