@@ -11,7 +11,10 @@
             location="classpath:musicPlayerInfo.properties"/>
 
     <bean id="classicalMusicBean"
-          class="org.example.ClassicalMusic">
+          class="org.example.ClassicalMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy"
+          factory-method="getClassicalMusic">
     </bean>
 
     <bean id="rockMusicBean"
