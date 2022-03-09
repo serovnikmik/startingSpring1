@@ -9,17 +9,8 @@
 
     <context:property-placeholder
             location="classpath:musicPlayerInfo.properties"/>
-
-    <bean id="classicalMusicBean"
-          class="org.example.ClassicalMusic"
-          init-method="doMyInit"
-          destroy-method="doMyDestroy"
-          factory-method="getClassicalMusic">
-    </bean>
-
-    <bean id="rockMusicBean"
-          class="org.example.RockMusic">
-    </bean>
+    
+    <context:component-scan base-package="org.example"/>
 
     <bean id="hyperpopMusicBean"
           class="org.example.HyperpopMusic">

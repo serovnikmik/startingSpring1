@@ -2,6 +2,10 @@ package org.example;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class TestSpring {
 
     public static void main(String[] args) {
@@ -9,17 +13,22 @@ public class TestSpring {
                 "applicationContext.xml"
         );
 
-
-
-        ClassicalMusic cm = ClassicalMusic.getClassicalMusic();
+//        ClassicalMusic cm = ClassicalMusic.getClassicalMusic();
 //        ClassicalMusic classicalMusic = context.getBean(
 //                "classicalMusicBean",
 //                ClassicalMusic.class);
 //        System.out.println(classicalMusic.getSong());
 
-        //Music music = context.getBean("musicBean", Music.class);
 
-        //MusicPlayer musicPlayer = new MusicPlayer(music);
+        Music rock = context.getBean("rockMusicBean", Music.class);
+        Music classic = context.getBean("classicalMusicBean", Music.class);
+
+        MusicPlayer musicPlayer = new MusicPlayer();
+        musicPlayer.setMusicList(new ArrayList<Music>(Arrays.asList(
+                rock, classic
+        )));
+
+        musicPlayer.playMusicList();
 
 //        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
 //        System.out.println("starting volume: " + musicPlayer.getVolume());
