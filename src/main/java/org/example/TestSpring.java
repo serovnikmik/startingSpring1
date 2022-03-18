@@ -20,30 +20,35 @@ public class TestSpring {
 //        System.out.println(classicalMusic.getSong());
 
 
-        Music rock = context.getBean("rockMusicBean", Music.class);
-        Music classic = context.getBean("classicalMusicBean", Music.class);
-
-        MusicPlayer musicPlayer = new MusicPlayer();
-        musicPlayer.setMusicList(new ArrayList<Music>(Arrays.asList(
-                rock, classic
-        )));
-
-        musicPlayer.playMusicList();
-
-//        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-//        System.out.println("starting volume: " + musicPlayer.getVolume());
-//
-//        MusicPlayer musicPlayer1 = context.getBean("musicPlayer", MusicPlayer.class);
-//        musicPlayer1.setVolume(288);
-//        System.out.println("result volume: " + musicPlayer.getVolume());
-//        System.out.println(musicPlayer == musicPlayer1);
-//
+//        ClassicalMusic classic = context.getBean(
+//                "classicalMusicBean", ClassicalMusic.class);
+//        MusicPlayer musicPlayer = context.getBean(
+//                "musicPlayer", MusicPlayer.class);
+//        musicPlayer.setMusicList(new ArrayList<Music>(Arrays.asList(
+//                rock, classic
+//        )));
 //        musicPlayer.playMusic();
-//        System.out.println("player name: "
-//                + musicPlayer.getName());
-//        System.out.println("volume: "
-//                + musicPlayer.getVolume());
-//        musicPlayer.playMusicList();
+
+        ClassicalMusic classicalMusic1 = context.getBean(
+                "classicalMusicBean", ClassicalMusic.class
+        );
+        ClassicalMusic classicalMusic2 = context.getBean(
+                "classicalMusicBean", ClassicalMusic.class
+        );
+        System.out.println(classicalMusic1 + " " + classicalMusic2);
+
+        RockMusic rockMusic1 = context.getBean(
+                "rockMusicBean", RockMusic.class
+        );
+        RockMusic rockMusic2 = context.getBean(
+                "rockMusicBean", RockMusic.class
+        );
+        System.out.println(rockMusic1 + " " + rockMusic2);
+
+        Computer computer = context.getBean(
+                "computer", Computer.class
+        );
+        computer.playMusic();
 
         context.close();
     }
