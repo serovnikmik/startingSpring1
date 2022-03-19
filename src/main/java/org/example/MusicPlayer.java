@@ -7,27 +7,35 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-@Component
 public class MusicPlayer {
 
-    @Autowired
-    @Qualifier("classicalMusicBean")
     private Music music;
+    private Music music2;
+
+    private List<Music> musicList;
 
     @Value("${musicPlayer.name}")
     private String name;
     @Value("${musicPlayer.volume}")
     private int volume;
 
-    private List<Music> musicList = new ArrayList<>();
-
     public MusicPlayer(){
 
     }
 
-    @Autowired
-    public MusicPlayer(@Qualifier("classicalMusicBean") Music music){
+    public MusicPlayer(@Qualifier("rockMusic") Music music,
+                       @Qualifier("classicalMusic") Music music2){
+        this.music = music;
+        this.music2 = music2;
+    }
+
+    public MusicPlayer(List<Music> musicList){
+        this.musicList = musicList;
+    }
+
+    public MusicPlayer(Music music){
         this.music = music;
     }
 
@@ -51,7 +59,6 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-//    @Autowired
 //    public void setMusic(Music music){
 //        this.music = music;
 //    }
@@ -66,6 +73,21 @@ public class MusicPlayer {
 
     public void playMusic(){
         System.out.println("Playing: " + this.music.getSong());
+    }
+
+    public void playRandomMusic(){
+        Random rand = new Random();
+        Music randomMusic = this.musicList.get(rand.nextInt(this.musicList.size()));
+        System.out.println("Playing: " + randomMusic.getPlaylist().get(
+                rand.nextInt(randomMusic.getPlaylist().size())));
+        System.out.println("volume: " + this.volume);
+    }
+
+    public void playRandomMusic1(){
+        Random rand = new Random();
+        Music randomMusic = this.musicList.get(rand.nextInt(this.musicList.size()));
+        System.out.println("Playing: " + randomMusic.getSong());
+        System.out.println("volume: " + this.volume);
     }
 
     public void playMusicList(){

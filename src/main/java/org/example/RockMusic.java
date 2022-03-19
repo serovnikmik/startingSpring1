@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Component("rockMusicBean")
-@Scope("prototype")
 public class RockMusic implements Music {
 
     private List<String> songs = new ArrayList<String>(){{
@@ -17,10 +15,15 @@ public class RockMusic implements Music {
         add("Rock Song 3");
     }};
 
+    public RockMusic(){
+
+    }
+
     @Override
     public String getSong(){
-        Random rand = new Random();
-        return this.songs.get(rand.nextInt(songs.size()));
+        return "Rockkk!!!";
+//        Random rand = new Random();
+//        return this.songs.get(rand.nextInt(songs.size()));
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Component("hyperpopMusicBean")
+
 public class HyperpopMusic implements Music{
 
     private List<String> songs = new ArrayList<String>(){{
@@ -17,8 +17,9 @@ public class HyperpopMusic implements Music{
 
     @Override
     public String getSong(){
-        Random rand = new Random();
-        return this.songs.get(rand.nextInt(songs.size()));
+        return "Yeyo!";
+//        Random rand = new Random();
+//        return this.songs.get(rand.nextInt(songs.size()));
     }
 
     @Override
